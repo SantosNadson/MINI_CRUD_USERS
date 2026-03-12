@@ -71,7 +71,7 @@ pip install -r requirements.txt
 
 2. **Open your browser and access:**
    ```
-   http://localhost:5000
+   http://localhost:8000
    ```
 
 3. **Use the web interface to manage users**
