@@ -52,7 +52,7 @@ async function deletar_usuarios(event){
 
    const resposta = await fetch("http://localhost:8000/users/delete_dados", 
     {
-   method: "POST",
+   method: "DELETE",
    body: JSON.stringify({
     user_id
    })
@@ -64,23 +64,23 @@ async function deletar_usuarios(event){
 
 async function atualizar_usuarios(event){
 
-  event.preventDefault(); // impede o envio do form
-  console.log("OBTIDO: ID PARA ATUALIZAR")
-  const user_id = document.getElementById("update_user_id").value
-  const new_name = document.getElementById("update_new_name").value
-  const new_age = document.getElementById("update_new_age").value
+   event.preventDefault(); // impede o envio do form
+   console.log("OBTIDO: ID PARA ATUALIZAR")
+   const user_id = document.getElementById("update_user_id").value
+   const new_name = document.getElementById("update_new_name").value
+   const new_age = document.getElementById("update_new_age").value
 
-   const resposta = await fetch("http://localhost:8000/users/update_dados", 
-    {
-   method: "POST",
+   const resposta =   fetch("http://localhost:8000/users/update_dados", 
+   {
+   method: "PUT",
    body: JSON.stringify({
-    user_id,
-    new_name,
-    new_age
+   user_id,
+   new_name,
+   new_age
 
    })
 
    }
-)
+   )
    console.log('dados atualizados', user_id,new_name,new_age)
 }

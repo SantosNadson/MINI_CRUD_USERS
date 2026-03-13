@@ -3,7 +3,6 @@ import uvicorn
 
 app = FastAPI()
 
-
 from routes import *
 
 if __name__ == "__main__":

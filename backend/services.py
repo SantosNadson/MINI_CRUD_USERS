@@ -33,8 +33,7 @@ def insert_data(nome: str,idade: int):
 def delete_data(id: int):
     query = f"""
     DELETE FROM users
-    WHERE 1=1
-        AND id = {id}
+    WHERE id = {id}
     """
 
     print(f"\n ETAPA INICIADA: DELETE, ID: {id}")
@@ -46,16 +45,10 @@ def update_data(user_id: int, nome: str, idade: int):
     query = f"""
     UPDATE users
     SET nome = '{nome}', idade = {idade}
-    WHERE 1=1
-        AND id = {user_id}
+    WHERE id = {user_id}
     """
 
     print(f"\n ETAPA INICIADA: UPDATE, ID: {id}")
-    print('\n DEBUG', query)
     cursor.execute(query)
     cursor.commit()
     print(f"\n ETAPA FINALIZADA: UPDATE, ID: {id}")
-    
-
-
-
