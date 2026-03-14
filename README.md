@@ -82,16 +82,23 @@ pip install -r requirements.txt
 
 ```
 MINI_CRUD_USERS/
-├── main.py              # Application entry point
-├── routes.py            # Application routes
-├── services.py          # Business logic
+│
+├── backend/             # Backend application
+│   ├── main.py          # Application entry point
+│   ├── routes.py        # Application routes
+│   ├── services.py      # Business logic
+│   └── __pycache__/     # Python cache
+│
+├── frontend/            # Frontend application
+│   ├── static/          # Static files
+│   │   └── script.js    # JavaScript functionality
+│   │
+│   └── templates/       # HTML templates
+│       ├── home.html    # Home page
+│       └── users.html   # Users management page
+│
 ├── requirements.txt     # Project dependencies
-├── templates/           # HTML templates
-│   ├── home.html
-│   └── users.html
-├── static/              # Static files
-│   └── script.js
-└── .gitignore           # Git ignore rules
+└── README.md            # Project documentation
 ```
 
 ---
