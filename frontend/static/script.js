@@ -15,14 +15,14 @@ async function load_users() {
     list.innerHTML = ""
 
     data.forEach(user => {
-
-        const item = document.createElement("li")
-
-        item.textContent = JSON.stringify(user)
-
-        list.appendChild(item)
-
-    })
+    const item = document.createElement("li")
+    item.innerHTML = `
+        <strong>ID:</strong> ${user.id}<br>
+        <strong>Nome:</strong> ${user.nome}<br>
+        <strong>Idade:</strong> ${user.idade}
+    `
+    list.appendChild(item)
+})
 
 }
 
