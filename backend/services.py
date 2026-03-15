@@ -18,14 +18,14 @@ def get_data():
     """
 
     cursor.execute(query)
-    colunas = [description[0] for description in cursor.description]
-    resultado = [dict(zip(colunas, row)) for row in cursor.fetchall()]
-    return resultado
+    columns = [description[0] for description in cursor.description]
+    result = [dict(zip(columns, row)) for row in cursor.fetchall()]
+    return result
 
-def insert_data(nome: str,idade: int):
+def insert_data(name: str, age: int):
     query = f"""
     INSERT INTO users (nome,idade)
-    values('{nome}','{idade}')
+    values('{name}','{age}')
     """
     cursor.execute(query)
     cursor.commit()
@@ -41,10 +41,10 @@ def delete_data(id: int):
     cursor.commit()
     print(f"\n ETAPA FINALIZADA: DELETE, ID: {id}")
 
-def update_data(user_id: int, nome: str, idade: int):
+def update_data(user_id: int, name: str, age: int):
     query = f"""
     UPDATE users
-    SET nome = '{nome}', idade = {idade}
+    SET nome = '{name}', idade = {age}
     WHERE id = {user_id}
     """
 

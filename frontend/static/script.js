@@ -1,56 +1,56 @@
-document.getElementById("btn_show_user").addEventListener("click", carregar_usuarios)
-document.getElementById("insert_user").addEventListener("submit", inserir_usuarios)
-document.getElementById("delete_user").addEventListener("submit", deletar_usuarios)
-document.getElementById("update_user").addEventListener("submit", atualizar_usuarios);
+document.getElementById("btn_show_user").addEventListener("click", load_users)
+document.getElementById("insert_user").addEventListener("submit", insert_user)
+document.getElementById("delete_user").addEventListener("submit", delete_user)
+document.getElementById("update_user").addEventListener("submit", update_user);
 
 
-async function carregar_usuarios() {
+async function load_users() {
 
-    const resposta = await fetch("http://localhost:8000/users/dados")
+    const response = await fetch("http://localhost:8000/users/dados")
 
-    const dados = await resposta.json()
+    const data = await response.json()
 
-    const lista = document.getElementById("show_users")
+    const list = document.getElementById("show_users")
 
-    lista.innerHTML = ""
+    list.innerHTML = ""
 
-    dados.forEach(tarefa => {
+    data.forEach(user => {
 
-        const item = document.createElement("show_users")
+        const item = document.createElement("li")
 
-        item.textContent = JSON.stringify(tarefa)
+        item.textContent = JSON.stringify(user)
 
-        lista.appendChild(item)
+        list.appendChild(item)
 
     })
 
 }
 
-async function inserir_usuarios(event){
+async function insert_user(event){
 
-  event.preventDefault(); // impede o envio do form
-  console.log("OBTIDO: DADOS PARA CADASTRAR");
-  const nome = document.getElementById("insert_name").value
-  const idade = document.getElementById("insert_age").value
+  event.preventDefault();
+  console.log("OBTAINED: USER DATA TO REGISTER");
+  const name = document.getElementById("insert_name").value
+  const age = document.getElementById("insert_age").value
 
-   const resposta = await fetch("http://localhost:8000/users/insert_dados", {
+   const response = await fetch("http://localhost:8000/users/insert_dados", {
    method: "POST",
    body: JSON.stringify({
-    nome,
-    idade
+    nome: name,
+    idade: age
    })
 
    })
-   console.log('dados cadastrados')
+   console.log('User registered successfully')
 }
 
-async function deletar_usuarios(event){
+async function delete_user(event){
 
-  event.preventDefault(); // impede o envio do form
-  console.log("OBTIDO: ID PARA DELETAR")
+  event.preventDefault();
+  console.log("OBTAINED: USER ID TO DELETE")
   const user_id = document.getElementById("delete_user_id").value
 
-   const resposta = await fetch("http://localhost:8000/users/delete_dados", 
+   const response = await fetch("http://localhost:8000/users/delete_dados", 
     {
    method: "DELETE",
    body: JSON.stringify({
@@ -59,18 +59,18 @@ async function deletar_usuarios(event){
 
    }
 )
-   console.log('dados removidos')
+   console.log('User deleted successfully')
 }
 
-async function atualizar_usuarios(event){
+async function update_user(event){
 
-   event.preventDefault(); // impede o envio do form
-   console.log("OBTIDO: ID PARA ATUALIZAR")
+   event.preventDefault();
+   console.log("OBTAINED: USER ID TO UPDATE")
    const user_id = document.getElementById("update_user_id").value
    const new_name = document.getElementById("update_new_name").value
    const new_age = document.getElementById("update_new_age").value
 
-   const resposta =   fetch("http://localhost:8000/users/update_dados", 
+   const response = await fetch("http://localhost:8000/users/update_dados", 
    {
    method: "PUT",
    body: JSON.stringify({
@@ -82,5 +82,5 @@ async function atualizar_usuarios(event){
 
    }
    )
-   console.log('dados atualizados', user_id,new_name,new_age)
+   console.log('User updated successfully', user_id, new_name, new_age)
 }
